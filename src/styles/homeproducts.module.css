@@ -1,0 +1,6 @@
+.home_container{
+    min-width: 70%;
+    width: 100%;
+    background-color: aqua;
+    min-height: 100vh;
+}

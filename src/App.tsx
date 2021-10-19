@@ -1,25 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect,useContext, useState} from 'react';
+import styles from './styles/global.module.css'
+import { ProductContext,product } from './types/types';
+import Navbar from './components/navbar';
+import HomeProducts from './components/home_products';
+import Cart from './components/cart'
 
+const CartContex = React.createContext<ProductContext>({} as ProductContext)
 function App() {
+  const [cartProducts,setCartProducts] = useState<product[]>()
+  useEffect(()=>{
+      fetch("/products").then(res=>res.json()).then(res=>console.log(res))
+  },[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <CartContex.Provider value={{products:cartProducts,setProducts:setCartProducts}}>
+    <div className={styles.app}>
+        <Navbar/>
+          <div className={styles.context_container}>
+          <HomeProducts></HomeProducts>
+          <Cart/>
+          </div>
     </div>
+    </CartContex.Provider>
   );
 }
 
