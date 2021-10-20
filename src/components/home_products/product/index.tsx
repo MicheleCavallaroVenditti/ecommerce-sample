@@ -1,10 +1,15 @@
-import React, {useContext} from "react";
+import React, {FC} from "react";
 import { product } from '../../../types/types'
 import NotFound from '../../../image/NotFound.png'
 import styles from '../../../styles/homeproducts.module.css'
-import { CartContex } from "../../../App";
-const Product = ({product}:{product:product})=>{
-  const {setProducts} = useContext(CartContex)
+import useCartContext from '../../../hooks/useCartContext'
+
+type Props = {
+  product:product
+}
+
+const Product:FC<Props> =({product})=>{
+  const {setProducts} = useCartContext()
 
   const handleAdd = ()=>{
       setProducts(prev=>[...prev,product])

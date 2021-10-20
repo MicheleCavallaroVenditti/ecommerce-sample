@@ -1,8 +1,9 @@
-import React, { useContext } from 'react'
-import { CartContex } from '../../App'
+import React from 'react'
 import { useMutation } from 'react-query'
 import styles from '../../styles/cart.module.css'
 import { product } from '../../types/types'
+import useCartContext from '../../hooks/useCartContext'
+
 
 const Cart = () => {
   const mutation = useMutation((data: product[]) => fetch("/buy", {
@@ -16,12 +17,15 @@ const Cart = () => {
       setProducts([])
     }
   })
-  const { products, setProducts } = useContext(CartContex)
+
+
+  const { products, setProducts } = useCartContext()
   const calculateTotal = () => {
     let total = 0
     products.map(elem => total += elem.price)
     return total
   }
+  
   return <div className={styles.cart_container}>
     <div className={styles.cart_header}>{products.length > 0 ? "Products in the cart" : "No products in the cart"}</div>
     <div className={styles.cart_products}>
