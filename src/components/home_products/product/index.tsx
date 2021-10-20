@@ -16,7 +16,7 @@ const Product:FC<Props> =({product})=>{
   }
   return <div className={styles.single_product}>
     <img className={styles.product_image} src={NotFound}/>
-      {product.name}{" "}{product.price}{" euro"}
+      {product.name}{" "}{product.price.toFixed(2)}{" euro"}
     <button className={styles.add_button} onClick={handleAdd}>Add to cart</button>
   </div>
 }
