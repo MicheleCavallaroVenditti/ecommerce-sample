@@ -1,11 +1,10 @@
 import React from 'react'
 import Product from './product'
-import { useQuery } from 'react-query'
-import { product } from '../../types/types'
+import useProductQuery from '../../hooks/useProductQuery'
 import styles from '../../styles/homeproducts.module.css'
 
 const HomeProducts = ()=>{
-  const {isLoading,error,data} = useQuery<product[]>("product",()=>fetch("/products").then(res=>res.json()))
+  const {isLoading,error,data} = useProductQuery()
 
   return <div className={styles.home_container}>
         {isLoading&& "Loading products..."}

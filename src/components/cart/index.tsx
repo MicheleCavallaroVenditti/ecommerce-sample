@@ -1,29 +1,18 @@
 import React from 'react'
-import { useMutation } from 'react-query'
+import useCartMutation from '../../hooks/useCartMutation'
 import styles from '../../styles/cart.module.css'
 import { product } from '../../types/types'
 import useCartContext from '../../hooks/useCartContext'
 
 
 const Cart = () => {
-  const mutation = useMutation((data: product[]) => fetch("/buy", {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }), {
-    onSuccess: () => {
-      setProducts([])
-    }
-  })
-
-
-  const { products, setProducts } = useCartContext()
-
   
+  const mutation = useCartMutation()
+  const { products } = useCartContext()
+
+
   const calculateTotal = () => {
-    return products.map(elem=>elem.price).reduce((prev,current)=>prev+current).toFixed(2)
+    return products.map(elem => elem.price).reduce((prev, current) => prev + current).toFixed(2)
   }
 
   return <div className={styles.cart_container}>
