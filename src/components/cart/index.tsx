@@ -20,12 +20,12 @@ const Cart = () => {
 
 
   const { products, setProducts } = useCartContext()
-  const calculateTotal = () => {
-    let total = 0
-    products.map(elem => total += elem.price)
-    return total
-  }
+
   
+  const calculateTotal = () => {
+    return products.map(elem=>elem.price).reduce((prev,current)=>prev+current)
+  }
+
   return <div className={styles.cart_container}>
     <div className={styles.cart_header}>{products.length > 0 ? "Products in the cart" : "No products in the cart"}</div>
     <div className={styles.cart_products}>
