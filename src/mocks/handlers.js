@@ -12,7 +12,7 @@ const products = [
   {
     price: 3.9,
     name: 'Banana',
-  },
+  }
 ];
 
 export const handlers = [
