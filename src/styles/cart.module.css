@@ -5,13 +5,10 @@
 
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  overflow-y: scroll;
+
   border: 1px solid rgba(0,0,0,.35);
 }
-.cart_container::-webkit-scrollbar{
-  display: none;
-}
+
 .cart_header{
   padding-top: 20px;
   text-align: center;
@@ -23,7 +20,13 @@
 .cart_products{
     padding-top: 10px;
     padding-bottom: 10px;
+    max-height: 350px;
     border-bottom: 1px solid black;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.cart_products::-webkit-scrollbar{
+  display: none;
 }
 .single_product{
   letter-spacing: 0.6px;

@@ -23,7 +23,7 @@ const Cart = () => {
 
   
   const calculateTotal = () => {
-    return products.map(elem=>elem.price).reduce((prev,current)=>prev+current)
+    return products.map(elem=>elem.price).reduce((prev,current)=>prev+current).toFixed(2)
   }
 
   return <div className={styles.cart_container}>
