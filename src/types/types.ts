@@ -6,6 +6,6 @@ export type product ={
 }
 
 export type ProductContext= {
-    products:product[]|undefined,
-    setProducts:Dispatch<SetStateAction<product[]|undefined>>
+    products:product[],
+    setProducts:Dispatch<SetStateAction<product[]>>
 }
